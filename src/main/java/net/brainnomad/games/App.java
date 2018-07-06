@@ -17,7 +17,7 @@ public class App {
         Scanner scan = new Scanner(System.in);
         App huntApp = new App();
         while (true) {
-            System.out.print("Our orders, Sir: ");
+            System.out.print("\nOur orders, sir: ");
             String order = scan.next();
             switch (order.toLowerCase().charAt(0)) {
             case 's':
