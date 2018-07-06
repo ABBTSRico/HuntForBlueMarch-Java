@@ -36,31 +36,44 @@ class GameBoard {
         }
     }
 
-    public void keyMoveDestroyer(char key) {
+    public void keyMoveDestroyer(String key) {
         String moveToMessage;
         boolean moveSuccessful = false;
 
-        switch (key) {
+        int oldXPos = destroyer.getPosition()[0];
+        int oldYPos = destroyer.getPosition()[1];
+        int newXPos = oldXPos;
+        int newYPos = oldYPos;
+
+        switch (key.charAt(0)) {
         case 'a':
-            moveSuccessful = destroyer.moveVessel(Directions.LEFT, this);
+            newXPos = oldXPos - 1;
             break;
         case 'd':
-        moveSuccessful = destroyer.moveVessel(Directions.RIGHT, this);
+            newXPos = oldXPos + 1;
             break;
         case 'w':
-        moveSuccessful = destroyer.moveVessel(Directions.UP, this);
+            newYPos = oldYPos - 1;
             break;
         case 'x':
-        moveSuccessful = destroyer.moveVessel(Directions.DOWN, this);
+            newYPos = oldYPos + 1;
             break;
         default:
             moveToMessage = "to unknown direction";
         }
 
-        if (moveSuccessful) {
-            System.out.println("Destroyer moved to " + destroyer.getPosition());
+        if (isValidMove(newXPos, newYPos)) {
+            destroyer.moveVessel(newXPos, newYPos);
+            System.out.println("Destroyer moved to " + destroyer.getPosition()[0] + "," + destroyer.getPosition()[1]);
         } else {
             System.out.println("Wrong direction, Sir. We would leave the map!");
         }
+    }
+
+    private boolean isValidMove(int xNew, int yNew) {
+        if ((xNew >= 0 && xNew <= getBoardWith()) && (yNew >= 0 && yNew <= getBoardHeight())) {
+            return true;
+        }
+        return false;
     }
 }
