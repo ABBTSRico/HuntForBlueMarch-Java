@@ -11,6 +11,10 @@ class Destroyer {
         yPos = y;
     }
 
+    public int getSonarRange() {
+        return SONARRANGE;
+    }
+    
     public int[] getPosition() {
         int[] pos = new int[2];
         pos[0] = xPos;

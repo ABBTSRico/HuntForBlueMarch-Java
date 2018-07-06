@@ -14,8 +14,8 @@ class GameBoard {
         boardHeight = boardWidth;
 
         Random rand = new Random();
-        int subPosX = 20; //rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
-        int subPosY = 10; //rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
+        int subPosX = 20; // rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
+        int subPosY = 10; // rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
         submarine = new Submarine(subPosX, subPosY);
         destroyer = new Destroyer(20, 20);
     }
@@ -34,6 +34,7 @@ class GameBoard {
         } else {
             System.out.println("Nothing nearby, Sir!");
         }
+        displaySonarMap();
     }
 
     public boolean keyDropBomb() {
@@ -80,5 +81,38 @@ class GameBoard {
             return true;
         }
         return false;
+    }
+
+    private void displaySonarMap() {
+        int sonarRange = destroyer.getSonarRange();
+
+        int xmin = destroyer.getPosition()[0] - sonarRange;
+        if (xmin < 0) xmin = 0;
+
+        int xmax = destroyer.getPosition()[0] + sonarRange;
+        if (xmax > boardWidth) xmax = boardWidth;
+
+        int ymin = destroyer.getPosition()[1] - sonarRange;
+        if (ymin < 0) ymin = 0;
+
+        int ymax = destroyer.getPosition()[1] + sonarRange;
+        if (ymax > boardHeight) ymax = boardHeight;
+
+        for (int y = ymin; y <= ymax; y++) {
+            for (int x = xmin; x <= xmax; x++) {
+                if (x == destroyer.getPosition()[0] && y == destroyer.getPosition()[1]) {
+                    System.out.print("X");
+                } else if (x == submarine.getPosition()[0] && y == submarine.getPosition()[1]) {
+                    System.out.print("S");
+                } else if (x == 0 || x == boardWidth) {
+                    System.out.print("|");
+                } else if (y == 0 || y == boardHeight) {
+                    System.out.print("_");
+                } else {
+                    System.out.print(".");
+                }
+            }
+            System.out.println();
+        }
     }
 }
