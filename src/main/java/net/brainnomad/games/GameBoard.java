@@ -36,19 +36,17 @@ class GameBoard {
         }
     }
 
-    public void keyDropBomb() {
+    public boolean keyDropBomb() {
         boolean hitSubmarine = destroyer.dropBomb(submarine);
         if (hitSubmarine) {
             System.out.println("Direct hit Sir!");
         } else {
             System.out.println("We missed 'em, Sir!");
         }
+        return hitSubmarine;
     }
 
     public void keyMoveDestroyer(String key) {
-        String moveToMessage;
-        boolean moveSuccessful = false;
-
         int oldXPos = destroyer.getPosition()[0];
         int oldYPos = destroyer.getPosition()[1];
         int newXPos = oldXPos;
@@ -67,8 +65,6 @@ class GameBoard {
         case 'x':
             newYPos = oldYPos + 1;
             break;
-        default:
-            moveToMessage = "to unknown direction";
         }
 
         if (isValidMove(newXPos, newYPos)) {

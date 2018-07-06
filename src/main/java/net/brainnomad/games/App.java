@@ -24,13 +24,18 @@ public class App {
                 huntApp.ocean.keySonar();
                 break;
             case 'b':
-                huntApp.ocean.keyDropBomb();
+                if (huntApp.ocean.keyDropBomb()) {
+                    System.out.println("Congratulation, sir! You completed the mission successfully!");
+                    scan.close();
+                    System.exit(0);
+                }
                 break;
             case 'h':
                 huntApp.printHelp();
                 break;
             case 'q':
                 System.out.println("!! ABANDON SHIP - ABANDON SHIP !!");
+                scan.close();
                 System.exit(0);
                 break;
             case 'a':
