@@ -29,12 +29,18 @@ public class App {
             case 'h':
                 huntApp.printHelp();
                 break;
-                case 'q':
+            case 'q':
                 System.out.println("!! ABANDON SHIP - ABANDON SHIP !!");
                 System.exit(0);
                 break;
-            default:
+            case 'a':
+            case 'd':
+            case 'w':
+            case 'x':
                 huntApp.ocean.keyMoveDestroyer(order);
+                break;
+            default:
+                System.out.println("Sorry captain, I didn't understand (h = help)\n");
             }
         }
     }
