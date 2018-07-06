@@ -14,10 +14,18 @@ class GameBoard {
         boardHeight = boardWidth;
 
         Random rand = new Random();
-        int subPosX = 20; // rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
-        int subPosY = 10; // rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
-        submarine = new Submarine(subPosX, subPosY);
-        destroyer = new Destroyer(20, 20);
+        int initPosX = rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
+        int initPosY = rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
+        submarine = new Submarine(initPosX, initPosY);
+        do {
+            initPosX = rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
+            initPosY = rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
+            destroyer = new Destroyer(initPosX, initPosY);
+        } while(checkCollision());
+    }
+
+    private boolean checkCollision() {
+        return submarine.checkCollision(destroyer);
     }
 
     public int getBoardWith() {
