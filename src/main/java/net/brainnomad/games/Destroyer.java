@@ -22,6 +22,13 @@ class Destroyer {
         return false;
     }
 
+    public boolean dropBomb(Submarine submarine) {
+        if (distance(submarine) <= 4) {
+            return true;
+        }
+        return false;
+    }
+    
     public void moveVessel(int newX, int newY) {
         xPos = newX;
         yPos = newY;

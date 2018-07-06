@@ -36,6 +36,15 @@ class GameBoard {
         }
     }
 
+    public void keyDropBomb() {
+        boolean hitSubmarine = destroyer.dropBomb(submarine);
+        if (hitSubmarine) {
+            System.out.println("Direct hit Sir!");
+        } else {
+            System.out.println("We missed 'em, Sir!");
+        }
+    }
+
     public void keyMoveDestroyer(String key) {
         String moveToMessage;
         boolean moveSuccessful = false;

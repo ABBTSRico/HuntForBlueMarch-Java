@@ -19,11 +19,14 @@ public class App {
         while (true) {
             System.out.print("Our orders, Sir: ");
             String order = scan.next();
-            switch(order.charAt(0)) {
-                case 's':
+            switch (order.toLowerCase().charAt(0)) {
+            case 's':
                 huntApp.ocean.keySonar();
                 break;
-                default:
+            case 'b':
+                huntApp.ocean.keyDropBomb();
+                break;
+            default:
                 huntApp.ocean.keyMoveDestroyer(order);
             }
         }
