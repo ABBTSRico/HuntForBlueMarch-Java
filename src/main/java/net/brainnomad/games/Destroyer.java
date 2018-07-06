@@ -2,6 +2,9 @@ package net.brainnomad.games;
 
 class Destroyer {
     private int xPos, yPos;
+    private final int BOMBRANGE = 4;
+    private final int SONARRANGE = 8;
+
 
     public Destroyer(int x, int y) {
         xPos = x;
@@ -16,19 +19,19 @@ class Destroyer {
     }
 
     public boolean readSonar(Submarine submarine) {
-        if (distance(submarine) <= 100) {
+        if (distance(submarine) <= SONARRANGE) {
             return true;
         }
         return false;
     }
 
     public boolean dropBomb(Submarine submarine) {
-        if (distance(submarine) <= 4) {
+        if (distance(submarine) <= BOMBRANGE) {
             return true;
         }
         return false;
     }
-    
+
     public void moveVessel(int newX, int newY) {
         xPos = newX;
         yPos = newY;

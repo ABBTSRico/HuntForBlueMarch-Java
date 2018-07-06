@@ -14,8 +14,8 @@ class GameBoard {
         boardHeight = boardWidth;
 
         Random rand = new Random();
-        int subPosX = rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
-        int subPosY = rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
+        int subPosX = 20; //rand.nextInt(boardWidth - 2 * MARGIN) + MARGIN;
+        int subPosY = 10; //rand.nextInt(boardHeight - 2 * MARGIN) + MARGIN;
         submarine = new Submarine(subPosX, subPosY);
         destroyer = new Destroyer(20, 20);
     }
