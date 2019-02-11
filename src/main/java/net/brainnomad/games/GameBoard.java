@@ -3,8 +3,9 @@ package net.brainnomad.games;
 import java.util.Random;
 
 class GameBoard {
-    private int boardWidth, boardHeight;
-    private Submarine submarine;
+    private final int boardWidth;
+    private final int boardHeight;
+    private final Submarine submarine;
     private Destroyer destroyer;
 
     private final int MARGIN = 5;
@@ -95,16 +96,24 @@ class GameBoard {
         int sonarRange = destroyer.getSonarRange();
 
         int xmin = destroyer.getPosition()[0] - sonarRange;
-        if (xmin < 0) xmin = 0;
+        if (xmin < 0) {
+            xmin = 0;
+        }
 
         int xmax = destroyer.getPosition()[0] + sonarRange;
-        if (xmax > boardWidth) xmax = boardWidth;
+        if (xmax > boardWidth) {
+            xmax = boardWidth;
+        }
 
         int ymin = destroyer.getPosition()[1] - sonarRange;
-        if (ymin < 0) ymin = 0;
+        if (ymin < 0) {
+            ymin = 0;
+        }
 
         int ymax = destroyer.getPosition()[1] + sonarRange;
-        if (ymax > boardHeight) ymax = boardHeight;
+        if (ymax > boardHeight) {
+            ymax = boardHeight;
+        }
 
         for (int y = ymin; y <= ymax; y++) {
             for (int x = xmin; x <= xmax; x++) {

@@ -7,7 +7,7 @@ import java.util.*;
  *
  */
 public class App {
-    private GameBoard ocean;
+    private final GameBoard ocean;
 
     public App() {
         ocean = new GameBoard();
@@ -51,16 +51,16 @@ public class App {
     }
 
     public void printHelp() {
-        StringBuffer helpMessage = new StringBuffer();
-        helpMessage.append("Commands are:\n");
-        helpMessage.append("s - Use (s)onar\n");
-        helpMessage.append("b - Drop a (b)omb\n");
-        helpMessage.append("\nMove destroyer:\n");
-        helpMessage.append("a - to the left\n");
-        helpMessage.append("d - to the right\n");
-        helpMessage.append("w - up\n");
-        helpMessage.append("x - down\n\n");
-        helpMessage.append("q - Abandon ship (quit game)\n");
+        StringBuilder helpMessage = new StringBuilder(100);
+        helpMessage.append("Commands are:\n")
+            .append("s - Use (s)onar\n")
+            .append("b - Drop a (b)omb\n")
+            .append("\nMove destroyer:\n")
+            .append("a - to the left\n")
+            .append("d - to the right\n")
+            .append("w - up\n")
+            .append("x - down\n\n")
+            .append("q - Abandon ship (quit game)\n");
 
         System.out.println(helpMessage.toString());
     }
