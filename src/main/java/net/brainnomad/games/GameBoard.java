@@ -11,7 +11,7 @@ class GameBoard {
     private final int MARGIN = 5;
 
     public GameBoard() {
-        boardWidth = 30;
+        boardWidth = 20;
         boardHeight = boardWidth;
 
         Random rand = new Random();
