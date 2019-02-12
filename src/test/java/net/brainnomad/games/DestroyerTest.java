@@ -63,7 +63,7 @@ public class DestroyerTest extends TestCase {
     {
         System.out.println("dropBomb");
         Submarine submarine = new Submarine(0,0);
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = vessel.dropBomb(submarine);
         assertEquals(expResult, result);
     }
