@@ -54,7 +54,7 @@ public class DestroyerTest extends TestCase {
     {
         System.out.println("readSonar");
         Submarine submarine = new Submarine(0,0);
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = vessel.readSonar(submarine);
         assertEquals(expResult, result);
     }
