@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class App {
     private final GameBoard ocean;
+    private  boolean isFirstTime = true;
 
     public App() {
         ocean = new GameBoard();
@@ -17,6 +18,10 @@ public class App {
         Scanner scan = new Scanner(System.in);
         App huntApp = new App();
         while (true) {
+            if (huntApp.isFirstTime) {
+                huntApp.printHelp();
+                huntApp.isFirstTime = false;
+            }
             System.out.print("\nOur orders, sir: ");
             String order = scan.next();
             switch (order.toLowerCase().charAt(0)) {
